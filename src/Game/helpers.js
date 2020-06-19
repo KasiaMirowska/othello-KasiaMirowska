@@ -1,3 +1,6 @@
+import React from 'react';
+
+
 export const makeSquares = () => {
     const squaresArr = [];
     for( let i=0; i<64; i++) {
@@ -18,4 +21,18 @@ export const makeRows = () => {
     }
     console.log(rowsArr)
     return rowsArr
+}
+
+export const makeDisk = (colorStyle) => {
+    const style = {
+        width: '40px',
+        height: '40px',
+        border: '2px, solid black',
+        borderRadius: '50%',
+        margin: '0 auto',
+        // backgroundColor: colorStyle,
+        backgroundColor: 'white',
+        //opacity: '0'
+    }
+    return (<div style={style} ></div>)
 }

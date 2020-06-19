@@ -1,13 +1,14 @@
 import React from 'react';
-import './Square.css';
+import './Square.scss';
+import {makeDisk} from '../Game/helpers'
 
+const Square = ({ value, click }) => {
+   const disk = makeDisk()
 
-const Square = ({value}) => {
-  
     return (
-        <button className='square'>
-            {value}
-        </button>
-    )
+    <button className='square' value={value} onClick={click}>
+        {disk}
+    </button>
+)
 }
 export default Square;
