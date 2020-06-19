@@ -1,0 +1,21 @@
+.row-container {
+    display: flex; 
+    justify-content: center;
+}
+.square{
+   height: 30px;
+   width: 30px;
+   color: lightgrey;
+}
+
+@media(min-width: 700px) {
+    .row-container {
+        display: flex; 
+        justify-content: center;
+    }
+    .square{
+       height: 50px;
+       width: 50px;
+       color: lightgrey;
+    }
+}

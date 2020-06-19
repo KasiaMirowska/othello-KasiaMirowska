@@ -1,13 +1,14 @@
 import React from 'react';
 import './Game.scss';
 import Board from '../Board/Board';
-
+import { makeRows } from './helpers';
 
 const Game = () => {
+    const rowsArr = makeRows()
+    
     return (
-        <div className='game'>
-            Game: 
-            <Board />
+        <div className='game'> 
+            <Board rowsArr={rowsArr}/>
         </div>
     )
 }

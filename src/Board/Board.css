@@ -1,0 +1,13 @@
+.board {
+    background-color: lightgrey;
+    width: 90vw;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+    .board {
+        width: 60vw;
+        padding: 100px;
+    }
+}

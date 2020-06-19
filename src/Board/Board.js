@@ -1,13 +1,22 @@
 import React from 'react';
-import './Board.scss';
+import './Board.css';
 import Square from '../Square/Square';
 
 
-const Board = () => {
+const Board = ({rowsArr}) => {
     return (
         <div className='board'>
-            Board:
-            <Square />
+            {
+                rowsArr.map((arr, i) => {
+                    return (
+                        <div className='row-container'> 
+                            {
+                                arr.map((num, i) => ( <Square key={i} value={num+1} /> ))
+                            }
+                        </div>
+                    )
+                }) 
+            } 
         </div>
     )
 }

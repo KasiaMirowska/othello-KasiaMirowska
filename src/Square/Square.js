@@ -1,12 +1,13 @@
 import React from 'react';
-import './Square.scss';
+import './Square.css';
 
 
-const Square = () => {
+const Square = ({value}) => {
+  
     return (
-        <div className='square'>
-            Square
-        </div>
+        <button className='square'>
+            {value}
+        </button>
     )
 }
 export default Square;
