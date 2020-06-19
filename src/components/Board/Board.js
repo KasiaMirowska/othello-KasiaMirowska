@@ -11,7 +11,7 @@ const Board = ({rowsArr, click}) => {
                     return (
                         <div key={i} className='row-container'> 
                             {
-                                arr.map((num, i) => ( <Square key={i} value={num+1} click={click} /> ))
+                                arr.map((square, i) => ( <Square key={i} value={square} click={() => click(square)} /> ))
                             }
                         </div>
                     )

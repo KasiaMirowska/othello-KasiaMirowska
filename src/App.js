@@ -1,14 +1,17 @@
 import React from 'react';
+import { Link, Route } from 'react-router-dom'
 import './App.css';
-import Game from './Game/Game';
+import Header from './components/Header/Header';
+import HomePage from './pages/HomePage/Homepage';
+import Game from './pages/Game/Game';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        HELLO FROM OTHELLO
-        <Game />
-      </header>
+      <Header />
+      {/* <Route path='/' component={Header} /> */}
+      <Route path='/' component={HomePage} />
+      <Route exact path='/game' component={Game} />
     </div>
   );
 }
