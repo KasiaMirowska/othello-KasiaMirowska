@@ -5,7 +5,8 @@ import { startBoard } from './game-utils';
 
 
 const INITIAL_STATE = {
-    playersTurn: 'p1',
+    playersTurn: 'B',
+    
     p1Score: 0,
     p2Score: 0,
     board: startBoard(),
@@ -13,9 +14,9 @@ const INITIAL_STATE = {
 }
 
 const gameReducer = (state=INITIAL_STATE, action) => {
-    // switch(action.type) {
+    switch(action.type) {
         
-    // }
+    }
     return state;
 }
 

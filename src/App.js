@@ -6,11 +6,11 @@ import HomePage from './pages/HomePage/Homepage';
 import Game from './pages/Game/Game';
 
 function App() {
-  console.log('entering??????')
+  
   return (
     <div className="App">
       <Header />
-      {/* <Route path='/' component={Header} /> */}
+      
       <Route path='/' component={HomePage} />
       <Route exact path='/game' component={Game} />
     </div>

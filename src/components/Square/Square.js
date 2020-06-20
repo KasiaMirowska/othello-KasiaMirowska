@@ -2,10 +2,13 @@ import React from 'react';
 import './Square.scss';
 import Disk from './Disk'
 
-const Square = ({ value, click }) => {
+const Square = ({value}) => {
     return (
-    <button className='square' value={value} onClick={click}>
-        <Disk />
+    <button className='square' value={value} >
+        {
+            typeof value == 'number'? (<Disk colorStyle={null} />) : 
+            value === 'B'? (<Disk  colorStyle={'black'}/>) : (<Disk  colorStyle={'white'}/>)
+        }
     </button>
 )
 }
