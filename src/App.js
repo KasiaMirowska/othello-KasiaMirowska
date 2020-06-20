@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage/Homepage';
 import Game from './pages/Game/Game';
 
 function App() {
+  console.log('entering??????')
   return (
     <div className="App">
       <Header />

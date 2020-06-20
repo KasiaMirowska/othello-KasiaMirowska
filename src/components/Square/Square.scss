@@ -6,6 +6,7 @@
    height: 30px;
    width: 30px;
    color: lightgrey;
+   padding: 0;
 }
 
 @media(min-width: 700px) {
@@ -17,5 +18,9 @@
        height: 50px;
        width: 50px;
        color: lightgrey;
+       padding: 0;
+       background-color: lightseagreen;
+       margin: 0;
+       border: 0.5px solid black;
     }
 }

@@ -1,0 +1,6 @@
+const GameActionTypes = {
+    ON_START_GAME: 'ON_START_GAME',
+    ON_USER_MOVE: 'ON_USER_MOVE',
+    ON_COMPLETED_MOVE: 'ON_COMPLETED_MOVE',
+    ON_ERROR: 'ON_ERROR',
+}
