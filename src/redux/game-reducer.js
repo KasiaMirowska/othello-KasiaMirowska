@@ -14,8 +14,16 @@ const INITIAL_STATE = {
 
 const gameReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
-      case GameActionTypes.ON_PLAYER_MOVE:
-            console.log('AM I HERE????????', state)
+        case GameActionTypes.NEW_GAME:
+            return ({
+                currentPlayer: 'p1',
+                p1Count: 2,
+                p2Count: 2,
+                board: startBoard(),
+                error: null,
+            })
+
+        case GameActionTypes.ON_PLAYER_MOVE:
             return ({
                 ...state,
                 currentPlayer: switchUser(state.currentPlayer),

@@ -1,15 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { newGame } from '../../redux/game-actions';
 import {Link} from 'react-router-dom';
 
 
-const HomePage = () => {
+const mapDispatchToProps = (dispatch) => ({
+    newGame: () => dispatch(newGame()),
+})
+
+
+const HomePage = ({newGame}) => {
     return (
-        <div className='main'>
+        <div className='main' >
             <Link to={'/game'} >
-                <button>Start New Game</button>
+                <button onClick={newGame} >Start New Game</button>
             </Link>
         </div>
     )
 }
 
-export default HomePage;
+export default connect(
+    null,
+    mapDispatchToProps,
+)(HomePage);
