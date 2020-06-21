@@ -4,18 +4,20 @@ import './Board.scss';
 import Square from '../Square/Square';
 
 const mapStateToProps = state => ({
+    currentPlayer: state.currentPlayer,
     board: state.board,
 })
 
 const Board = ({board}) => {
+    
     return (
         <div className='board'>
             {
-                board.map((arr, i) => {
+                board.map((arr, rowIndex) => {
                     return (
-                        <div key={i} className='row-container'> 
+                        <div key={rowIndex} className='row-container'> 
                             {
-                                arr.map((square, i) => ( <Square key={i} value={square} /> ))
+                                arr.map((square, index) => ( <Square key={index} value={square} placement={{rowIndex, index}}/> ))
                             }
                         </div>
                     )

@@ -1,7 +1,10 @@
 import GameActionTypes from './game-types';
 
-export const startGame = () => {
+
+
+export const onPlayerClick = (placement) => {
     return ({
-        type: CartActionTypes.ON_GAME_START
+        type: GameActionTypes.ON_PLAYER_MOVE,
+        payload: placement,
     })
 }
