@@ -19,12 +19,8 @@ export const updateGame = newState => {
     });
 }
 
-export const onPlayerClick = (placement) => async (dispatch, getState) => {
-    
-    const oldState = {...getState()};
-    console.log('STATE BEFORE', oldState);
-    const { currentPlayer, board, } = oldState;
-
+export const onPlayerClick = ({ board, currentPlayer, placement}) => (dispatch) => {
+    console.log(board, 'board', currentPlayer, 'cp', placement, 'placement');
     const newUser = switchUser(currentPlayer);
     const newBoard = updateBoardWithNewMove(board, currentPlayer, placement);
     const newPositions = playerCurrentPositions(newBoard, newUser);

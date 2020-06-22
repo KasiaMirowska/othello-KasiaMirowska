@@ -5,18 +5,29 @@ import './Square.scss';
 import Disk from './Disk';
 
 const mapDispatchToProps = dispatch => ({
-    onClick: (placement) => dispatch(onPlayerClick(placement))
+    onClick: (placement, board) => dispatch(onPlayerClick(placement, board))
+})
+
+const mapStateToProps = state => ({
+    board: state.board,
+    currentPlayer: state.currentPlayer
 })
 
 
+const Square = ({ board, currentPlayer, placement, onClick, value }) => {
+    
 
-const Square = ({ value, placement, onClick }) => {
+    function clicker() {
+        console.log(board, placement, currentPlayer, value ,'VVVVVVVVVVVVVV');
+        onClick({ board, currentPlayer, placement})
+    }
+
     return (
-        <button type='button' className='square' value={value} onClick={() => onClick({ placement, value })}>
+        <button type='button' className='square' value={value} onClick={() => clicker()}>
             {
                 value === 0 ? (<Disk colorStyle={0} />) :
-                    value === 'B' ? (<Disk colorStyle={'black'} />) : 
-                    value === 'W'? (<Disk colorStyle={'white'} />) : (<Disk  colorStyle={'lightgrey'} />)
+                value === 'B' ? (<Disk colorStyle={'black'} />) : 
+                value === 'W'? (<Disk colorStyle={'white'} />) : (<Disk  colorStyle={'lightgrey'} />)
 
             }
         </button>
@@ -25,6 +36,6 @@ const Square = ({ value, placement, onClick }) => {
 
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps,
 )(Square);

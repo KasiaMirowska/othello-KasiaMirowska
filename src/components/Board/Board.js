@@ -9,15 +9,15 @@ const mapStateToProps = state => ({
 })
 
 const Board = ({board}) => {
-    
+    console.log('RERENDERED', board)
     return (
         <div className='board'>
             {
-                board.map((arr, rowIndex) => {
+                board.map((row, rowIndex) => {
                     return (
                         <div key={rowIndex} className='row-container'> 
                             {
-                                arr.map((square, index) => ( <Square key={index} value={square} placement={{rowIndex, index}}/> ))
+                                row.map((square, columnIndex) => ( <Square key={columnIndex} value={square} placement={{rowIndex, columnIndex}}/> ))
                             }
                         </div>
                     )
