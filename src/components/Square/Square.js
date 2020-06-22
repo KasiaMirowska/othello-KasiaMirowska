@@ -14,8 +14,10 @@ const Square = ({ value, placement, onClick }) => {
     return (
         <button type='button' className='square' value={value} onClick={() => onClick({ placement, value })}>
             {
-                typeof value == 'number' ? (<Disk colorStyle={null} />) :
-                    value === 'B' ? (<Disk colorStyle={'black'} />) : (<Disk colorStyle={'white'} />)
+                value === 0 ? (<Disk colorStyle={0} />) :
+                    value === 'B' ? (<Disk colorStyle={'black'} />) : 
+                    value === 'W'? (<Disk colorStyle={'white'} />) : (<Disk  colorStyle={'lightgrey'} />)
+
             }
         </button>
     )

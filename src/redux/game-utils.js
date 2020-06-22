@@ -1,7 +1,7 @@
 export const emptyBoard = () => {
     let arr = [];
     for (let i = 0; i < 64; i++) {
-        arr.push(i);
+        arr.push(0);
     }
 
     let rowsArr = [];
@@ -17,10 +17,14 @@ export const emptyBoard = () => {
 export const startBoard = () => {
     const startB = emptyBoard();
 
-    startB[3].splice(4, 1, 'B');
-    startB[4].splice(3, 1, 'B');
-    startB[3].splice(3, 1, 'W');
-    startB[4].splice(4, 1, 'W');
+    startB[3][4]  = 'B';
+    startB[4][3] =  'B';
+    startB[3][3] = 'W';
+    startB[4][4] = 'W';
+    startB[2][3] = 99;
+    startB[3][2] = 99;
+    startB[4][5] = 99;
+    startB[5][4] = 99;
     
     return startB;
 };
@@ -45,13 +49,16 @@ export const scoreCount = (board) => {
 
 
 
-export const updateBoard = (board, user, {placement, value}) => {
-    console.log('UPDATEING?????')
+export const updateBoardWithNewMove = (board, user, {placement, value}) => {
     let newBoard = [...board];
-    
-    newBoard.forEach((row, i) => {
-        row.forEach((square, k) => {
-            if(square === value) {
+    console.log(placement, 'IN UPDATE')
+    let row = placement.rowIndex;
+    let column = placement.index;
+
+    for(let i = 0; i<8; i++){
+        for(let k=0; k<8; k++){
+            if(i === row && k === column) {
+                console.log(i, k, row, column, "I KKKKKKK")
                 if(user ==='B'){
                     newBoard[i][k] = 'B';
                 }
@@ -59,8 +66,9 @@ export const updateBoard = (board, user, {placement, value}) => {
                     newBoard[i][k] = 'W';
                 };
             };
-        });
-    });
+        }
+    }
+    console.log(newBoard, 'NEW>>>>>>>??????')
     return newBoard;
 }
 
@@ -76,7 +84,9 @@ export const switchUser = (user) => {
 
 export const playerCurrentPositions = (board, user) => {
     let arr = [];
-  
+    console.log(board, 'IN CURRENT POSITIONS')
+    
+    
     board.forEach((row, i) => {
         row.forEach((column, k) => {
             if(board[i][k] === user){
@@ -88,54 +98,74 @@ export const playerCurrentPositions = (board, user) => {
             }
         })
     })
-    console.log(arr)
+    console.log(arr, 'player positions')
     return arr;
 }
 
-export const updatePlayerPositions = (board, user, {placement}) => {
-    let currentArr = playerCurrentPositions(board, user);
-    let updatedArr = [...currentArr, placement];
-    console.log(updatedArr);
-    return updatedArr;
+export const calculateValidMoves = (board, user, placement) => {
+    let currentBoard = updateBoardWithNewMove(board, user, {placement})
+    console.log(currentBoard, 'CCCCCCCCCC')
+    let userPositions = playerCurrentPositions(currentBoard,user);
+
+    userPositions.forEach(obj => {
+        let row = obj.rowIndex;
+        let column = obj.index;
+        calculateMoves(currentBoard, user, row, column);
+    })
 }
 
-
-export const calculateValidMoves = (board, user, userPositions) => {
-    let futurePlayer = switchUser(user);
-    let p = playerCurrentPositions(futurePlayer)
-    console.log(p, '/PPPPPPPPPPPPPPPP')
+const clearPastPossibleMoves = (board) => {
+    let newBoard = [...board];
+    for (let i = 0; i < newBoard.length; i++) {
+        for (let k = 0; k <newBoard[i].length; k++) {            
+            if(newBoard[i][k] == 99) {
+                newBoard[i][k] = 0;
+            }
+        }
+    }
+    return newBoard;
 }
-
 //checks and returns where certain user can move
-const calculate = (board, user, moveRow, moveColumn) => {
-    let validBoard = emptyBoard();
-    console.log( user, moveRow, moveColumn , 'IN CALCULATION')
+const calculateMoves = (board, user, row, column) => {
+
+    //let validBoard = emptyBoard();
+    let validBoard = clearPastPossibleMoves(board);
+    // console.log( validBoard,user, row, column ,'IN CALCULATION')
     for(let row = 0; row < 8; row ++) {
         for (let column = 0; column < 8; column ++) {
-            if(typeof validBoard[row][column] === 'number') {
-                let nw = validMove(board, user, -1, -1, moveRow, moveColumn);
-                let nn = validMove(board, user, -1, 0, moveRow, moveColumn);
-                let ne = validMove(board, user, -1, 1, moveRow, moveColumn);
-                
-                let ee = validMove(board, user, 0, 1, moveRow, moveColumn);
-                let ww = validMove(board, user, 0, -1, moveRow, moveColumn);
-
-                let sw = validMove(board, user, 1, -1, moveRow, moveColumn);
-                let ss = validMove(board, user, 1, 0, moveRow, moveColumn);
-                let se = validMove(board, user, 1, 1, moveRow, moveColumn);
+            if(validBoard[row][column] === 0) {
+                let nw = validMove(board, user, -1, -1, row, column);
+                //console.log(nw, 'NORTH WEST MOVE')
+                let nn = validMove(board, user, -1, 0, row, column);
+                //console.log(nw, 'NORTH NORTH MOVE')
+                let ne = validMove(board, user, -1, 1, row, column);
+                //console.log(nw, 'NORTH east MOVE')
+                let ee = validMove(board, user, 0, 1, row, column);
+                //console.log(nw, 'EAST EAST MOVE')
+                let ww = validMove(board, user, 0, -1, row, column);
+                //console.log(nw, 'WEST WEST MOVE')
+                let sw = validMove(board, user, 1, -1, row, column);
+                //console.log(nw, 'south WEST MOVE')
+                let ss = validMove(board, user, 1, 0, row, column);
+                //console.log(nw, 'SOUTHSOUTH MOVE')
+                let se = validMove(board, user, 1, 1, row, column);
+                //console.log(nw, 'SOUTH EAST MOVE')
 
                 if(nw || nn || ne || ee || ww || sw || ss || se){
-                    validBoard[row][column] = user
+                    //console.log(nw, '??????')
+                    validBoard[row][column] = 99;
                 }
             }
         }
     }
+    console.log(validBoard, 'VALIDBOARD??????????')
     return validBoard;
 }
 
-//checking if position at plannedRowMove and plannedColumnMove contains the oposite user 
-const validMove = (board, user, pr, pc, row, column) => {
-    console.log('hERE?????????H at the start', row, column)
+
+//checking if position at plannedRowMove and plannedColumnMove contains the oposite user, dr represents a num for a square jump in the direction of row or column
+const validMove = (board, user, dr, dc, row, column) => {
+    //console.log('hERE?????????H at the start', row, column, board)
     let opositeP;
     
     if (user === 'B'){
@@ -144,39 +174,37 @@ const validMove = (board, user, pr, pc, row, column) => {
         opositeP = 'B';
     };
     //checking if we are next to the board edge
-    if(row + pr < 0 || row + pr > 7) {
-        console.log('hERE?????????H')
+    if(row + dr < 0 || row + dr > 7) {
+        //console.log('hERE?????????H')
         return false;
-    }
-    if(column + pc < 0 || column + pc > 7) {
+    } else if(column + dc < 0 || column + dc > 7) { 
         return false;
-    }
-    //checking if neighboring opositeP
-    if(board[row+pr][column+pc] !== opositeP){
-        console.log('hERE?????????H')
+    } else if(board[row+dr][column+dc] !== opositeP){ //checking if neighboring an opponent
+        //console.log('hERE?????????H')
         return false;
-    }
+    } else if(row + dr + dr< 0 || row + dr + dr > 7) {// checking 2 steps ahead on the board
+        return false;
+    } else if(column + dc + dc < 0 || column + dc + dc > 7) {
+        return false;
+    }else {
+        return checkLineMatch(board, user, dr, dc, row+dr, column+dc);
+    };
     
-    //checking if we have enough space for a move
-    if(row + pr + pr< 0 || row + pr + pr > 7) {
-        return false;
-    }
-    if(column + pc + pc < 0 || column + pc + pc > 7) {
-        return false;
-    }
-    return checkLineMatch(board, user, pr, pc, row+pr, column+pc)
-}
+};
 
-//check if there is user's color of the user at starting position or anywhere further by adding pr and pc
-const checkLineMatch = (board, user, pr, pc, row, column) => {
+//check if there is user's color of the user at starting position or anywhere further by adding dr and dc
+const checkLineMatch = (board, user, dr, dc, row, column) => {
     if(board[row][column] === user) {
         return true;
     }
-    if(row + pr < 0 || row + pr > 7) {
+    if(typeof board[row][column] === 'number' ) {
         return false;
     }
-    if(column + pc < 0 || column + pc > 7) {
+    if(row + dr < 0 || row + dr > 7) {
         return false;
     }
-    return checkLineMatch(board, user, pr, pc, row+pr, column+pc);
+    if(column + dc < 0 || column + dc > 7) {
+        return false;
+    }
+    return checkLineMatch(board, user, dr, dc, row+dr, column+dc);
 }

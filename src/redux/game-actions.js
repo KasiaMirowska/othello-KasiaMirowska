@@ -1,6 +1,5 @@
 import GameActionTypes from './game-types';
-import Game from '../pages/Game/Game';
-import { switchUser, updatePlayerPositions, updateBoard } from './game-utils';
+import { switchUser, playerCurrentPositions, updateBoardWithNewMove, calculateValidMoves } from './game-utils';
 
 export const newGame = () => {
     return ({
@@ -13,11 +12,6 @@ export const updateCurrentPlayerPositions = (placement) => ({
     payload: placement,
 })
 
-export const validMoves = (board) => ({
-    type: GameActionTypes.CALCULATE_VALID_MOVES,
-    payload: board,
-})
-
 export const updateGame = newState => {
     return ({
         type: GameActionTypes.UPDATE_GAME,
@@ -25,16 +19,22 @@ export const updateGame = newState => {
     });
 }
 
-export const onPlayerClick = (placement) => (dispatch, getState) => {
-    const state = getState();
+export const onPlayerClick = (placement) => async (dispatch, getState) => {
     
-    const newUser = switchUser(state.currentPlayer);
-    const newPositions = updatePlayerPositions(state.board, newUser, placement);
-    const newBoard = updateBoard(state.board, state.currentPlayer, placement);
+    const oldState = {...getState()};
+    console.log('STATE BEFORE', oldState);
+    const { currentPlayer, board, } = oldState;
 
+    const newUser = switchUser(currentPlayer);
+    const newBoard = updateBoardWithNewMove(board, currentPlayer, placement);
+    const newPositions = playerCurrentPositions(newBoard, newUser);
+    const availableMoves = calculateValidMoves(newBoard, newUser, newPositions);
+    
     dispatch(updateGame({
         currentPlayer: newUser,
         playerPositions: newPositions,
         board: newBoard,
+        validMoves: availableMoves,
+        error: null,
     }));
 }

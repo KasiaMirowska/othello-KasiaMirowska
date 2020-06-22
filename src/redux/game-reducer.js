@@ -1,31 +1,26 @@
 import GameActionTypes from './game-types';
-import { startBoard, scoreCount, updateBoard, switchUser, calculateValidMoves, playerCurrentPositions, updatePlayerPositions } from './game-utils';
+import { startBoard } from './game-utils';
 
 
-
-
-const INITIAL_STATE = {
+const makeInitialState = () => ({
     currentPlayer: 'B',
     p1Count: 2,
     p2Count: 2,
-    playerPositions: playerCurrentPositions(startBoard(), 'B'),
-    validMoves: [],//calculateValidMoves(startBoard(), 'B', playerCurrentPositions(startBoard(), 'B')),
+    //playerPositions: playerCurrentPositions(startBoard(), 'B'),
+    validMoves: [],
     board: startBoard(),
     error: null,
-}
+})
+
+const INITIAL_STATE = makeInitialState();
 
 const gameReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GameActionTypes.NEW_GAME:
-            return ({
-                currentPlayer: 'B',
-                p1Count: 2,
-                p2Count: 2,
-                board: startBoard(),
-                error: null,
-            });
+            return makeInitialState();
+
         case GameActionTypes.UPDATE_GAME:
-            return({
+            return ({
                 ...state,
                 ...action.newState
             });
