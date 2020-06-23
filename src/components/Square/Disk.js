@@ -1,24 +1,39 @@
 import React from 'react';
 
 
-const Disk = ({colorStyle}) => {
-   
-    if(colorStyle === 0) {
-        const style = {
-            width: '90%',
-            height: '90%',
-            margin: '0 auto',
-        } 
-        return (<div style={style} ></div>)
-    }else {
-        const style = {
-            width: '90%',
-            height: '90%',
-            borderRadius: '50%',
-            margin: '0 auto',
-            backgroundColor: colorStyle,
-        }
-        return (<div style={style} ></div>)
-    }
-}
+const Disk = ({ colorStyle }) => {
+    const style = {
+        width: '90%',
+        height: '90%',
+        margin: '0 auto',
+    };
+
+    if (colorStyle === 0) {
+        return (
+            <div style={style} ></div>
+        );
+
+    } else if (colorStyle === 'W') {
+        style.borderRadius = '50%';
+        style.backgroundColor = 'white';
+        return (
+            <div style={style} ></div>
+        );
+
+    } else if (colorStyle === 'B') {
+        style.borderRadius = '50%';
+        style.backgroundColor = 'black';
+        return (
+            <div style={style} ></div>
+        );
+
+    } else {
+        style.borderRadius = '50%';
+        style.border = 'solid grey 1px';
+        return (
+            <div style={style} ></div>
+        );
+    };
+};
+
 export default Disk;

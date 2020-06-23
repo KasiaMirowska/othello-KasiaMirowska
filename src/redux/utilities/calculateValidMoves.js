@@ -20,7 +20,7 @@ const clearPastPossibleMoves = (board) => {
 }
 
 //checks and returns where certain user can move
-const calculateMoves = (board, user, row, column) => {
+const calculateMoves = async(board, user, row, column) => {
     let validBoard = clearPastPossibleMoves(board);
    
     for (let row = 0; row < 8; row++) {
@@ -36,7 +36,7 @@ const calculateMoves = (board, user, row, column) => {
                 let se = validMove(board, user, 1, 1, row, column);
 
                 if (nw || nn || ne || ee || ww || sw || ss || se) {
-                    validBoard[row][column] = 99;
+                validBoard[row][column] = 99;
                 }
             }
         }

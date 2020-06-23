@@ -1,7 +1,6 @@
 import GameActionTypes from './game-types';
 import { startBoard } from './utilities/startBoard';
-import { switchUser } from './utilities/switchUser';
-import { scoreCount } from './utilities/scoreCount';
+
 
 
 
@@ -9,9 +8,9 @@ const makeInitialState = () => ({
     currentPlayer: 'B',
     p1Count: 2,
     p2Count: 2,
-    //playerPositions: playerCurrentPositions(startBoard(), 'B'),
     validMoves: [],
     board: startBoard(),
+    endOfgame: false,
     error: null,
 })
 
@@ -26,7 +25,7 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 ...action.newState
-            });
+            }); 
     }
     return state;
 }

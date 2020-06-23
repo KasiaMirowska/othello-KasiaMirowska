@@ -15,23 +15,25 @@ const mapStateToProps = state => ({
 
 
 const Square = ({ board, currentPlayer, placement, onClick, value }) => {
-    
-
-    function clicker() {
-        console.log(board, placement, currentPlayer, value ,'VVVVVVVVVVVVVV');
-        onClick({ board, currentPlayer, placement})
+   const clicker = () => {
+        console.log(board, placement, currentPlayer, value, 'VVVVVVVVVVVVVV');
+        onClick({ board, currentPlayer, placement })
     }
 
-    return (
-        <button type='button' className='square' value={value} onClick={() => clicker()}>
-            {
-                value === 0 ? (<Disk colorStyle={0} />) :
-                value === 'B' ? (<Disk colorStyle={'black'} />) : 
-                value === 'W'? (<Disk colorStyle={'white'} />) : (<Disk  colorStyle={'lightgrey'} />)
+    if (value === 99) {
+        return (
+            <button type='button' className='square' value={value} onClick={() => clicker()}>
+                <Disk colorStyle={value} />
+            </button>
+        )
+    } else {
+        return (
+            <div className='square'>
+                <Disk colorStyle={value} />
+            </div>
+        )
+    }
 
-            }
-        </button>
-    )
 }
 
 
