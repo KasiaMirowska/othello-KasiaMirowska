@@ -16,7 +16,6 @@ const mapStateToProps = state => ({
 
 const Square = ({ board, currentPlayer, placement, onClick, value }) => {
    const clicker = () => {
-        console.log(board, placement, currentPlayer, value, 'VVVVVVVVVVVVVV');
         onClick({ board, currentPlayer, placement })
     }
 

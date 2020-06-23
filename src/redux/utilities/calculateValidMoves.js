@@ -49,10 +49,10 @@ const calculateMoves = async(board, user, row, column) => {
 const validMove = (board, user, dr, dc, row, column) => {
     let opositeP;
 
-    if (user === 'B') {
-        opositeP = 'W';
+    if (user === 'Black') {
+        opositeP = 'White';
     } else {
-        opositeP = 'B';
+        opositeP = 'Black';
     };
     //checking if we are next to the board edge
     if (row + dr < 0 || row + dr > 7) {

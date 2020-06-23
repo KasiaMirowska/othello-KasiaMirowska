@@ -4,6 +4,7 @@ import './Board.scss';
 import Square from '../Square/Square';
 
 const mapStateToProps = state => ({
+    currentPlayer: state.currentPlayer,
     board: state.board,
     blackPlayer: state.p1Count,
     whitePlayer: state.p2Count,
@@ -11,14 +12,8 @@ const mapStateToProps = state => ({
     winner: state.winner
 })
 
-const Board = ({board, blackPlayer, whitePlayer, endOfGame, winner}) => {
-    // let winner = (whitePlayer, blackPlayer) => {
-    //     if(Number(whitePlayer) > Number(blackPlayer)) {
-    //         return 'WHITE WON'
-    //     }else {
-    //         return 'BLACK WON'
-    //     }
-    // }
+const Board = ({currentPlayer, board, blackPlayer, whitePlayer, endOfGame, winner}) => {
+    
     if(endOfGame) {
         return (
             <div className='board'>
@@ -42,6 +37,7 @@ const Board = ({board, blackPlayer, whitePlayer, endOfGame, winner}) => {
     } else {
         return (
             <div className='board'>
+                <h2>It is {currentPlayer.toUpperCase()}'s turn</h2>
                 <h2>Current score: </h2>
                 <h3>BLACK: {blackPlayer}</h3>
                 <h3>WHITE: {whitePlayer}</h3>

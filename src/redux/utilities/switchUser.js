@@ -1,10 +1,10 @@
 
 export const switchUser = (user) => {
     let updatedUser;
-    if (user === 'B') {
-        updatedUser = 'W';
+    if (user === 'Black') {
+        updatedUser = 'White';
     } else {
-        updatedUser = 'B'
+        updatedUser = 'Black'
     }
     return updatedUser;
 }

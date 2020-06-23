@@ -5,7 +5,7 @@ import { startBoard } from './utilities/startBoard';
 
 
 const makeInitialState = () => ({
-    currentPlayer: 'B',
+    currentPlayer: 'Black',
     p1Count: 2,
     p2Count: 2,
     validMoves: [],

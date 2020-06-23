@@ -17,10 +17,10 @@ export const emptyBoard = () => {
 export const startBoard = () => {
     const startB = emptyBoard();
 
-    startB[3][4] = 'B';
-    startB[4][3] = 'B';
-    startB[3][3] = 'W';
-    startB[4][4] = 'W';
+    startB[3][4] = 'Black';
+    startB[4][3] = 'Black';
+    startB[3][3] = 'White';
+    startB[4][4] = 'White';
     startB[2][3] = 99;
     startB[3][2] = 99;
     startB[4][5] = 99;

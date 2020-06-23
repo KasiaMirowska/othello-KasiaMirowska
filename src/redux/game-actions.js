@@ -38,6 +38,8 @@ export const onPlayerClick = ({ board, currentPlayer, placement}) => (dispatch) 
     const endOfGame = isItEndOfGame(newBoard, blackCount, whiteCount);
     const winner = winnerIs(blackCount, whiteCount);
     console.log(endOfGame, winner)
+
+    
     dispatch(updateGame({
         currentPlayer: newUser,
         p1Count: blackCount,

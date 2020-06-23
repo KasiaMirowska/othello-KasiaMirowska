@@ -39,10 +39,10 @@ export const updateBoardWithNewMove = (board, user, placement) => {
 
 const checkNeighbor = async (board, user, dr, dc, row, column) => {
     let opositeP;
-    if (user === 'B') {
-        opositeP = 'W';
+    if (user === 'Black') {
+        opositeP = 'White';
     } else {
-        opositeP = 'B';
+        opositeP = 'Black';
     };
 
     if (row + dr < 0 || row + dr > 7) {
@@ -85,10 +85,10 @@ const checkLineMatch2 = (board, user, dr, dc, row, column) => {
 
 const flipDisk = (board, user, dr, dc, row, column) => {
     let opositeP;
-    if (user === 'B') {
-        opositeP = 'W';
+    if (user === 'Black') {
+        opositeP = 'White';
     } else {
-        opositeP = 'B';
+        opositeP = 'Black';
     };
 
 

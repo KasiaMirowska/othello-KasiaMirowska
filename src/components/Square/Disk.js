@@ -13,14 +13,14 @@ const Disk = ({ colorStyle }) => {
             <div style={style} ></div>
         );
 
-    } else if (colorStyle === 'W') {
+    } else if (colorStyle === 'White') {
         style.borderRadius = '50%';
         style.backgroundColor = 'white';
         return (
             <div style={style} ></div>
         );
 
-    } else if (colorStyle === 'B') {
+    } else if (colorStyle === 'Black') {
         style.borderRadius = '50%';
         style.backgroundColor = 'black';
         return (
