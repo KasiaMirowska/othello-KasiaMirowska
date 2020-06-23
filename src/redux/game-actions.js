@@ -1,5 +1,13 @@
 import GameActionTypes from './game-types';
-import { switchUser, playerCurrentPositions, updateBoardWithNewMove, calculateValidMoves } from './game-utils';
+
+import { switchUser } from './utilities/switchUser';
+import { scoreCount } from './utilities/scoreCount';
+import { playerCurrentPositions } from './utilities/playerCurrentPositions';
+import { calculateValidMoves } from './utilities/calculateValidMoves';
+import { updateBoardWithNewMove } from './utilities/move';
+
+
+
 
 export const newGame = () => {
     return ({
@@ -20,7 +28,7 @@ export const updateGame = newState => {
 }
 
 export const onPlayerClick = ({ board, currentPlayer, placement}) => (dispatch) => {
-    console.log(board, 'board', currentPlayer, 'cp', placement, 'placement');
+    
     const newUser = switchUser(currentPlayer);
     const newBoard = updateBoardWithNewMove(board, currentPlayer, placement);
     const newPositions = playerCurrentPositions(newBoard, newUser);

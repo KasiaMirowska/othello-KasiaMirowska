@@ -1,5 +1,8 @@
 import GameActionTypes from './game-types';
-import { startBoard } from './game-utils';
+import { startBoard } from './utilities/startBoard';
+import { switchUser } from './utilities/switchUser';
+import { scoreCount } from './utilities/scoreCount';
+
 
 
 const makeInitialState = () => ({
