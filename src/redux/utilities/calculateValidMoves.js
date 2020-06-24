@@ -39,12 +39,10 @@ const calculateMoves = async(board, user, row, column) => {
 
                 if (nw || nn || ne || ee || ww || sw || ss || se) {
                 validBoard[row][column] = 99;
-                    console.log(validBoard, 'valid board')
                 }
             }
         }
     }
-    console.log(validBoard, 'finished?????')
     return validBoard;
 }
 

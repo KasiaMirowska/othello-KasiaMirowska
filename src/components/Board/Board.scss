@@ -1,28 +1,27 @@
 .board-container{
-    background-color: rgb(62, 86, 102);
-    // background-color: rgb(26, 172, 26);
-    width: 90vw;
-    padding: 20px;
-    margin: 0 auto;
+    background-color: rgb(77, 104, 105);
+    width: 90%;
+    padding-top: 30px;
 
-    .stats {
+    .turn {
         text-align: center;
     }
-}
+    
+    .board {   
+        margin: 0 auto;
+        padding-bottom: 200px;
+    }
+    }
 
 @media (min-width: 800px) {
     .board-container {
         margin: 0 auto;
-        display: flex;
-        padding-bottom: 200px;
-       
-        .board {
-           margin: 50px;
+        .turn {
+            text-align: center;
         }
-       .stats{
-           text-align: center;
-           padding: 30px;
-           margin: 50px;
+        .board {
+            margin: 50px;
+            padding-bottom: 200px;
         }
     }
 }

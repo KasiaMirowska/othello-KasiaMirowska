@@ -8,17 +8,21 @@ const mapDispatchToProps = dispatch => ({
     onClick: (placement, board) => dispatch(onPlayerClick(placement, board))
 })
 
-const mapStateToProps = state => ({
-    board: state.board,
-    currentPlayer: state.currentPlayer
-})
+const mapStateToProps = state => {
+    const { board, currentPlayer, player1, player2 } = state;
+    return ({
+        board,
+        currentPlayer,
+        player1,
+        player2
+    })
+}
 
+const Square = ({ board, currentPlayer, player1, player2, placement, onClick, value }) => {
 
-const Square = ({ board, currentPlayer, placement, onClick, value }) => {
- 
-   const clicker = () => {
-    console.log(currentPlayer ,'player??')
-        onClick({ board, currentPlayer, placement })
+    const clicker = () => {
+        console.log(currentPlayer, 'player??')
+        onClick({ board, currentPlayer, player1, player2, placement })
     }
 
     if (value === 99) {

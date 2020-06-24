@@ -20,7 +20,7 @@ export const ColorChoices = ({ colorPicker, player, player1 }) => {
 
     return (
         <div className='color-row'>
-            <h2>Pick color for <span className='player'>{player.toUpperCase()}</span> </h2>
+            <h2>pick color for <span className='player'>{player.toUpperCase()}</span> </h2>
             <button type='button' value={'red'} disabled={disableChoice('red')} className='color' onClick={() => colorPicker(player, 'red')}>
                 <Disk colorStyle={'rgb(128,0,0)'} />
             </button>

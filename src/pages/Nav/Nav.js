@@ -14,10 +14,12 @@ const Nav = ({ newGame }) => {
         <div className='choice-row' >
             <ColorChoices player={'player1'} />
             <ColorChoices player={'player2'} />
-            
+            <div className='color-row'>
+            <h2> or continue with default black & white</h2>
             <Link to='/game'>
                 <button className='game-button' onClick={newGame} >Start New Game</button>
             </Link>
+            </div>
        </div >
     );
 }

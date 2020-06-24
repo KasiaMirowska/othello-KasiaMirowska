@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { playerCurrentPositions } from '../../redux/utilities/playerCurrentPositions';
 import { colorDisplay } from './colorUtils';
 
 const mapStateToProps = state => ({
     player1: state.player1,
     player2: state.player2,
 })
+
 const Disk = ({ colorStyle, player1, player2 }) => {
     
     const style = {

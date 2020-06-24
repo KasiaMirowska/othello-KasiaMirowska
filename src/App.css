@@ -1,36 +1,31 @@
 * {
   box-sizing: border-box;
   
-  /* /* font-family: 'Amatic SC', cursive;
-  font-family: 'Indie Flower', cursive;
-  font-family: 'Krona One', sans-serif;
-  font-family: 'Odibee Sans', cursive; */
-  font-family: 'Oswald', sans-serif;
 }
 
 .App {
   background-color: rgb(19, 47, 58);
   color: white;
   padding-bottom: 200px;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 main {
-  background-color: rgb(62, 86, 102);
+  font-family: 'Oswald', sans-serif; 
   padding-bottom: 200px;
-  
 }
 
 a:link {
   text-decoration: none;
 }
+
 .player {
   font-family: 'Amatic SC', cursive;
-  font-size: 1.4em;
-}
+  font-size: 1.2em;
+ }  
 
 @media(min-width: 700px) {
   main {
-    background-color: rgb(19, 47, 58);
+    /* background-color: rgb(19, 47, 58); */
     padding-bottom: 200px;
     display: flex;
     justify-content: center;
@@ -38,6 +33,6 @@ a:link {
   }
   .player {
     font-family: 'Amatic SC', cursive;
-    font-size: 1.4em;
+    font-size: 2em;
   }
 }

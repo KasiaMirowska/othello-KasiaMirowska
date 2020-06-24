@@ -1,8 +1,5 @@
 import GameActionTypes from './game-types';
 import { startBoard } from './utilities/startBoard';
-import Game from '../pages/Game/Game';
-
-
 
 
 const makeInitialState = () => ({
@@ -14,6 +11,7 @@ const makeInitialState = () => ({
     validMoves: [],
     board: startBoard(),
     endOfgame: false,
+    winner: null,
     error: null,
 })
 
@@ -22,7 +20,6 @@ const INITIAL_STATE = makeInitialState();
 const gameReducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case GameActionTypes.NEW_GAME:
-            console.log(state.currentPlayer, 'NEW GAME')
             return ({
                 ...state,
                 currentPlayer: 'player1',
@@ -30,7 +27,6 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             })
         
         case GameActionTypes.PICK_COLOR: 
-        console.log(action.player, action.color, 'CCCCCCCCCC')
             return ({
                 ...state,
                 [action.player]: action.color,
