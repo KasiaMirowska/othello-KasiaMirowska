@@ -1,7 +1,6 @@
-import { switchUser } from './switchUser'; 
+import { switchUser } from './switchUser';
 
 export const calculateValidMoves = (board, user, userPositions) => {
-    console.log(board, user, 'USER?')
     userPositions.forEach(obj => {
         let row = obj.rowIndex;
         let column = obj.index;
@@ -13,7 +12,7 @@ const clearPastPossibleMoves = (board) => {
     let newBoard = [...board];
     for (let i = 0; i < newBoard.length; i++) {
         for (let k = 0; k < newBoard[i].length; k++) {
-            if (newBoard[i][k] == 99) {
+            if (newBoard[i][k] === 99) {
                 newBoard[i][k] = 0;
             }
         }
@@ -22,13 +21,13 @@ const clearPastPossibleMoves = (board) => {
 }
 
 //checks and returns where certain user can move
-const calculateMoves = async(board, user, row, column) => {
+const calculateMoves = async (board, user, row, column) => {
     let validBoard = clearPastPossibleMoves(board);
-   
+
     for (let row = 0; row < 8; row++) {
         for (let column = 0; column < 8; column++) {
             if (validBoard[row][column] === 0) {
-                let nw = validMove(board, user, -1, -1, row, column);                
+                let nw = validMove(board, user, -1, -1, row, column);
                 let nn = validMove(board, user, -1, 0, row, column);
                 let ne = validMove(board, user, -1, 1, row, column);
                 let ee = validMove(board, user, 0, 1, row, column);
@@ -38,7 +37,7 @@ const calculateMoves = async(board, user, row, column) => {
                 let se = validMove(board, user, 1, 1, row, column);
 
                 if (nw || nn || ne || ee || ww || sw || ss || se) {
-                validBoard[row][column] = 99;
+                    validBoard[row][column] = 99;
                 }
             }
         }

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import './Game.scss';
 import Board from '../../components/Board/Board';
 import { connect } from 'react-redux';

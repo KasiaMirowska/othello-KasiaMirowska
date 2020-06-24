@@ -3,7 +3,6 @@ import { switchUser } from "./switchUser";
 //flipping disk function. I'm recreating the board to prevent state coruption
 const flippedDisks = [];
 export const updateBoardWithNewMove = (board, user, placement) => {
-    console.log(board, user, placement, 'HERE?????')
     let newBoard = [];
 
     let row = placement.rowIndex;
@@ -33,7 +32,6 @@ export const updateBoardWithNewMove = (board, user, placement) => {
         newBoard.push(arr);
     }
     flippedDisks.forEach(obj => {
-        //console.log(value, row, column, 'IN MOVE!!!!!!')
         const { value, row, column } = obj;
         newBoard[row][column] = value;
     });

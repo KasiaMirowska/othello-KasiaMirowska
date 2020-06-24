@@ -25,8 +25,8 @@ const gameReducer = (state = INITIAL_STATE, action) => {
                 currentPlayer: 'player1',
                 board: startBoard(),
             })
-        
-        case GameActionTypes.PICK_COLOR: 
+
+        case GameActionTypes.PICK_COLOR:
             return ({
                 ...state,
                 [action.player]: action.color,
@@ -36,9 +36,12 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 ...action.newState
-            }); 
+            });
+        default:
+            return state;
     }
-    return state;
+
 }
 
 export default gameReducer;
+
