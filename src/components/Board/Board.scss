@@ -1,13 +1,28 @@
-.board {
-    background-color: rgb(104, 103, 103);
+.board-container{
+    background-color: rgb(62, 86, 102);
+    // background-color: rgb(26, 172, 26);
     width: 90vw;
     padding: 20px;
     margin: 0 auto;
+
+    .stats {
+        text-align: center;
+    }
 }
 
 @media (min-width: 800px) {
-    .board {
-        width: 60vw;
-        padding: 100px;
+    .board-container {
+        margin: 0 auto;
+        display: flex;
+        padding-bottom: 200px;
+       
+        .board {
+           margin: 50px;
+        }
+       .stats{
+           text-align: center;
+           padding: 30px;
+           margin: 50px;
+        }
     }
 }

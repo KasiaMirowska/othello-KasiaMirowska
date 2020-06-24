@@ -1,10 +1,8 @@
 
 export const switchUser = (user) => {
-    let updatedUser;
-    if (user === 'Black') {
-        updatedUser = 'White';
-    } else {
-        updatedUser = 'Black'
-    }
-    return updatedUser;
+    if(user === 'player1') {
+        return 'player2';
+    } else{
+        return 'player1';
+    } 
 }

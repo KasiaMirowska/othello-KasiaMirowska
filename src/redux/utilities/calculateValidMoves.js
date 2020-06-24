@@ -1,5 +1,7 @@
+import { switchUser } from './switchUser'; 
 
 export const calculateValidMoves = (board, user, userPositions) => {
+    console.log(board, user, 'USER?')
     userPositions.forEach(obj => {
         let row = obj.rowIndex;
         let column = obj.index;
@@ -37,23 +39,20 @@ const calculateMoves = async(board, user, row, column) => {
 
                 if (nw || nn || ne || ee || ww || sw || ss || se) {
                 validBoard[row][column] = 99;
+                    console.log(validBoard, 'valid board')
                 }
             }
         }
     }
+    console.log(validBoard, 'finished?????')
     return validBoard;
 }
 
 
 //checking if position at neighboring row and column contains the oposite user, dr represents a num for a square jump in the direction of row or column
 const validMove = (board, user, dr, dc, row, column) => {
-    let opositeP;
+    const opositeP = switchUser(user);
 
-    if (user === 'Black') {
-        opositeP = 'White';
-    } else {
-        opositeP = 'Black';
-    };
     //checking if we are next to the board edge
     if (row + dr < 0 || row + dr > 7) {
         return false;

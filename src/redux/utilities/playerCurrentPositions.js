@@ -1,6 +1,6 @@
 export const playerCurrentPositions = (board, user) => {
     let arr = [];
-
+    console.log(user)
     board.forEach((row, i) => {
         row.forEach((column, k) => {
             if (board[i][k] === user) {

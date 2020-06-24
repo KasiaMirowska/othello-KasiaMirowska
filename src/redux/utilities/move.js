@@ -1,7 +1,9 @@
+import { switchUser } from "./switchUser";
 
 //flipping disk function. I'm recreating the board to prevent state coruption
 const flippedDisks = [];
 export const updateBoardWithNewMove = (board, user, placement) => {
+    console.log(board, user, placement, 'HERE?????')
     let newBoard = [];
 
     let row = placement.rowIndex;
@@ -31,6 +33,7 @@ export const updateBoardWithNewMove = (board, user, placement) => {
         newBoard.push(arr);
     }
     flippedDisks.forEach(obj => {
+        //console.log(value, row, column, 'IN MOVE!!!!!!')
         const { value, row, column } = obj;
         newBoard[row][column] = value;
     });
@@ -38,12 +41,7 @@ export const updateBoardWithNewMove = (board, user, placement) => {
 }
 
 const checkNeighbor = async (board, user, dr, dc, row, column) => {
-    let opositeP;
-    if (user === 'Black') {
-        opositeP = 'White';
-    } else {
-        opositeP = 'Black';
-    };
+    const opositeP = switchUser(user);
 
     if (row + dr < 0 || row + dr > 7) {
         return;
@@ -84,12 +82,7 @@ const checkLineMatch2 = (board, user, dr, dc, row, column) => {
 }
 
 const flipDisk = (board, user, dr, dc, row, column) => {
-    let opositeP;
-    if (user === 'Black') {
-        opositeP = 'White';
-    } else {
-        opositeP = 'Black';
-    };
+    const opositeP = switchUser(user);
 
 
     if (board[row][column] === user) {

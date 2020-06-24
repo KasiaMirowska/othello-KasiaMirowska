@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { onPlayerClick } from '../../redux/game-actions';
 import './Square.scss';
-import Disk from './Disk';
+import Disk from '../Disk/Disk';
 
 const mapDispatchToProps = dispatch => ({
     onClick: (placement, board) => dispatch(onPlayerClick(placement, board))
@@ -15,7 +15,9 @@ const mapStateToProps = state => ({
 
 
 const Square = ({ board, currentPlayer, placement, onClick, value }) => {
+ 
    const clicker = () => {
+    console.log(currentPlayer ,'player??')
         onClick({ board, currentPlayer, placement })
     }
 

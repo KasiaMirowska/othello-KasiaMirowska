@@ -1,4 +1,7 @@
 .game {
+    background-color: rgb(19, 47, 58);
     border: 1px red;
-    padding: 10px;
+    width: 60vw;
+    display: flex;
+    flex-direction: row;
 }
