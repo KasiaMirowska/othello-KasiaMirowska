@@ -3,7 +3,8 @@ import { switchUser } from "./switchUser";
 //flipping disk function. I'm recreating the board to prevent state coruption
 const flippedDisks = [];
 export const updateBoardWithNewMove = (board, user, placement) => {
-    let newBoard = [];
+    let new1Board = [];
+    let new2Board = [];
 
     let row = placement.rowIndex;
     let column = placement.columnIndex;
@@ -26,16 +27,18 @@ export const updateBoardWithNewMove = (board, user, placement) => {
             } else if (board[i][k] === 99) {
                 arr.push(0);
             } else {
+
                 arr.push(board[i][k]);
             }
         }
-        newBoard.push(arr);
+        new1Board.push(arr);
     }
     flippedDisks.forEach(obj => {
         const { value, row, column } = obj;
-        newBoard[row][column] = value;
+        new1Board[row][column] = value;
     });
-    return newBoard;
+
+    return new1Board;
 }
 
 const checkNeighbor = async (board, user, dr, dc, row, column) => {

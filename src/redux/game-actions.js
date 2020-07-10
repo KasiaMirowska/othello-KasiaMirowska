@@ -3,12 +3,10 @@ import GameActionTypes from './game-types';
 import { switchUser } from './utilities/switchUser';
 import { scoreCount } from './utilities/scoreCount';
 import { playerCurrentPositions } from './utilities/playerCurrentPositions';
-import { calculateValidMoves } from './utilities/calculateValidMoves';
+import { calculateValidMoves, updateBoardWithValidMoves } from './utilities/calculateValidMoves';
 import { updateBoardWithNewMove } from './utilities/move';
 import { isItEndOfGame } from './utilities/endOfGame';
 import { winnerIs } from './utilities/winner';
-
-
 
 export const pickColor = (player, color) => {
     return ({
@@ -34,9 +32,15 @@ export const updateGame = newState => {
 export const onPlayerClick = ({ board, currentPlayer, player1, player2, placement }) => (dispatch) => {
 
     const newUser = switchUser(currentPlayer);
+    
     const newBoard = updateBoardWithNewMove(board, currentPlayer, placement);
+    
     const newPositions = playerCurrentPositions(newBoard, newUser);
+    
     const availableMoves = calculateValidMoves(newBoard, newUser, newPositions);
+    
+    const updatedBoard = updateBoardWithValidMoves(newBoard, availableMoves)
+
     const score = scoreCount(newBoard);
     const { player1Count, player2Count } = score;
     const endOfGame = isItEndOfGame(newBoard, player1Count, player2Count);
@@ -47,8 +51,7 @@ export const onPlayerClick = ({ board, currentPlayer, player1, player2, placemen
         p1Count: player1Count,
         p2Count: player2Count,
         playerPositions: newPositions,
-        board: newBoard,
-        validMoves: availableMoves,
+        board: updatedBoard,
         endOfGame: endOfGame,
         winner: winner,
         error: null,
