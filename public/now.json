@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "name": "othello-game",
+    "alias": "othello-game-km",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+      ]
+  }

@@ -23,6 +23,8 @@ const gameReducer = (state = INITIAL_STATE, action) => {
             return ({
                 ...state,
                 currentPlayer: 'player1',
+                p1Count: 2,
+                p2Count: 2,
                 board: startBoard(),
             })
 
